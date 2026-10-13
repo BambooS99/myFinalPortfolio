@@ -2,7 +2,7 @@ import type { Job, Project } from "./content";
 
 export const jobs: Job[] = [
   {
-    when: "Mar 2026 — Present",
+    when: "Mar 2026 - Present",
     title: "Software Engineer",
     org: "Toshiba Global Commerce Solutions",
     location: "Research Triangle Park, NC",
@@ -18,21 +18,21 @@ export const jobs: Job[] = [
         On the data side, I built FastAPI services that aggregate transaction
         data into customer spend metrics for Elera partners. I also designed and
         deployed <strong>Model Context Protocol (MCP) tooling</strong> that
-        tighten our AI-assisted development loop, cutting iteration cycles and
+        tightens our AI-assisted development loop, cutting iteration cycles and
         improving the accuracy of generated code.
       </>,
     ],
     tags: ["Vue.js", "Python", "FastAPI", "REST", "Microservices", "MCP"],
   },
   {
-    when: "Aug 2022 — Mar 2026",
+    when: "Aug 2022 - Mar 2026",
     title: "Software Engineer",
     org: "Cisco",
     location: "Research Triangle Park, NC",
     paragraphs: [
       <>
         I shipped internal tools for Cisco partners, renewal managers, and
-        business leaders — multi-step React workflows with secure input
+        business leaders: multi-step React workflows with secure input
         validation, robust error handling, and feature-flagged rollouts. My
         biggest architectural win was refactoring{" "}
         <strong>100+ React components</strong> onto shared Redux selectors,
@@ -62,7 +62,7 @@ export const jobs: Job[] = [
     ],
   },
   {
-    when: "Aug 2019 — Aug 2021",
+    when: "Aug 2019 - Aug 2021",
     title: "UX Design Engineer",
     org: "UNC Pembroke Cybersecurity Club",
     location: "Pembroke, NC",
@@ -81,17 +81,24 @@ export const jobs: Job[] = [
 export const projects: Project[] = [
   {
     kind: "Personal project",
-    title: "Python Math Bot",
+    title: "Math AI Data Parser",
     description:
-      "A full-stack app that solves math problems with AI — without trusting the AI to do the math. A Claude-powered FastAPI service classifies each problem and routes it to a deterministic solver, so answers are exact and token usage stays low. The React frontend keeps the experience fast and responsive.",
-    metric: <>React · FastAPI · Claude API</>,
+      "An AI math engine that never lets the model do the arithmetic. Claude classifies each question into a structured schema, then deterministic solvers (SymPy and Python) compute the answer, including step-by-step derivatives and integrals. React chat UI on a FastAPI backend.",
+    stack: ["React", "TypeScript", "FastAPI", "Claude API", "SymPy"],
+    links: [
+      { label: "Live site", href: "https://mathllm.netlify.app/" },
+      {
+        label: "GitHub",
+        href: "https://github.com/BambooS99/Math-AI-data-parser",
+      },
+    ],
   },
   {
     kind: "Client work",
     title: "Photography portfolio",
     description:
       "A portfolio site I built for a professional photographer to showcase weddings, events, and freelance work. Galleries are organized into dynamic category and photo routes, each with its own SEO and social-sharing metadata, and images are served responsively through next/image. Clients can reach out through a built-in contact form.",
-    metric: <>Next.js · TypeScript · Tailwind CSS</>,
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
     links: [
       { label: "Live site", href: "https://tessaosbornephotography.com/" },
     ],
@@ -101,10 +108,10 @@ export const projects: Project[] = [
     title: "Music review app",
     description:
       "A full-stack album review app with a retro, terminal-inspired interface. The React frontend handles browsing, album detail pages, and star ratings, backed by a FastAPI service and PostgreSQL database. The backend is containerized with Docker, and the components are covered by Vitest and React Testing Library.",
-    metric: <>React · FastAPI · PostgreSQL · Docker</>,
+    stack: ["React", "FastAPI", "PostgreSQL", "Docker"],
     links: [
       {
-        label: "GitHub repo",
+        label: "GitHub",
         href: "https://github.com/BambooS99/MusicProject",
       },
     ],
@@ -114,10 +121,10 @@ export const projects: Project[] = [
     title: "Met Museum collection explorer",
     description:
       "A search app for the Metropolitan Museum of Art's public API, covering 400,000+ artworks. Users can search by keyword, filter by department, highlights, or image availability, and open a detailed view of any piece. API calls are handled with RTK Query, and the layout is responsive across desktop and mobile.",
-    metric: <>React · TypeScript · Redux Toolkit · RTK Query</>,
+    stack: ["React", "TypeScript", "Redux Toolkit", "RTK Query"],
     links: [
       {
-        label: "GitHub repo",
+        label: "GitHub",
         href: "https://github.com/BambooS99/the-met-museum-database-and-search",
       },
     ],

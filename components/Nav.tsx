@@ -1,11 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { profile } from "@/data/content";
 
-const links = ["about", "experience", "projects", "skills", "contact"];
+const links = [
+  { id: "top", label: "Home" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function Nav() {
-  const [active, setActive] = useState<string | null>(null);
+  const [active, setActive] = useState<string | null>("top");
 
   useEffect(() => {
     const spy = new IntersectionObserver(
@@ -13,42 +21,34 @@ export default function Nav() {
       { rootMargin: "-45% 0px -50% 0px" },
     );
     document.querySelectorAll("section[id]").forEach((s) => spy.observe(s));
-    return () => spy.disconnect();
+    // The masthead is above the band the spy watches, so mark Home whenever it scrolls into view.
+    const top = new IntersectionObserver(([e]) => e.isIntersecting && setActive("top"));
+    const masthead = document.getElementById("top");
+    if (masthead) top.observe(masthead);
+    return () => {
+      spy.disconnect();
+      top.disconnect();
+    };
   }, []);
-
-  function toggleTheme() {
-    const root = document.documentElement;
-    const dark = root.dataset.theme
-      ? root.dataset.theme === "dark"
-      : matchMedia("(prefers-color-scheme: dark)").matches;
-    root.dataset.theme = dark ? "light" : "dark";
-    try {
-      localStorage.setItem("theme", root.dataset.theme);
-    } catch {}
-  }
 
   return (
     <header className="nav">
-      <div className="wrap">
-        <a href="#top" className="logo">
-          owais<span>.</span>hassan
+      <div className="sheet nav-inner">
+        <a href="#top" className="nav-name">
+          {profile.name}
         </a>
-        <nav>
+        <nav aria-label="Primary">
           <ul>
-            {links.map((id) => (
-              <li key={id} className="link">
-                <a href={`#${id}`} className={active === id ? "active" : undefined}>
-                  {id[0].toUpperCase() + id.slice(1)}
+            {links.map(({ id, label }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  className={active === id ? "active" : undefined}
+                  aria-current={active === id ? "true" : undefined}>
+                  {label}
                 </a>
               </li>
             ))}
-            <li>
-              <button className="theme-btn" onClick={toggleTheme} aria-label="Toggle color theme">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-                </svg>
-              </button>
-            </li>
           </ul>
         </nav>
       </div>

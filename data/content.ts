@@ -6,6 +6,7 @@ export const profile = {
   linkedin: "https://linkedin.com/in/owaishassan1",
   github: "https://github.com/BambooS99",
   resume: "/resume.pdf",
+  roles: ["Software Engineer", "Full Stack", "Frontend"],
 };
 
 export const facts = [
@@ -14,7 +15,14 @@ export const facts = [
     label: "Focus",
     value: "Frontend architecture, APIs, AI tooling, Python API development",
   },
-  { label: "Education", value: "B.S. Computer Science, UNC Pembroke" },
+];
+
+export const education = [
+  {
+    degree: "B.S. Computer Science",
+    school: "University of North Carolina at Pembroke",
+    year: "2021",
+  },
 ];
 
 export type Job = {
@@ -30,7 +38,7 @@ export type Project = {
   kind: string;
   title: string;
   description: string;
-  metric: ReactNode;
+  stack: string[];
   links?: { label: string; href: string }[];
 };
 
@@ -42,9 +50,7 @@ export const skills = [
       "JavaScript",
       "React",
       "Redux",
-      "Vue.js",
       "Angular",
-      "Next.js",
       "Vite",
       "HTML/CSS",
       "Storybook",
@@ -56,9 +62,6 @@ export const skills = [
     items: [
       "Python",
       "FastAPI",
-      "Node.js",
-      "Java",
-      "SQL",
       "REST APIs",
       "Microservices",
       "Docker",
@@ -85,9 +88,9 @@ export const skills = [
     items: [
       "MCP servers",
       "Claude",
-      "GitHub Copilot",
       "Cursor",
       "Codex",
+      "GitHub Copilot",
       "Gemini",
       "Windsurf",
     ],

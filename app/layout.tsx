@@ -1,33 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+// Closest free match to the reference's Helvetica-style grotesk.
+const sans = Inter_Tight({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
-const mono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-});
+const description =
+  "Owais Hassan is a full-stack software engineer building UI and API work for enterprise platforms at Toshiba and formerly Cisco.";
 
 export const metadata: Metadata = {
-  title: "Owais Hassan — Software Engineer",
-  description:
-    "Owais Hassan is a full-stack software engineer in Raleigh–Durham, NC, building UI and API work for enterprise platforms at Toshiba and formerly Cisco.",
+  title: "Owais Hassan | Software Engineer",
+  description,
+  openGraph: {
+    type: "website",
+    title: "Owais Hassan | Software Engineer",
+    description,
+  },
 };
-
-// Runs before first paint: applies the saved theme (no light/dark flash) and flags JS
-// so scroll-reveal only hides content when it can actually reveal it.
-const themeScript = `document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${mono.variable}`} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="en" className={sans.variable}>
       <body>{children}</body>
     </html>
   );
